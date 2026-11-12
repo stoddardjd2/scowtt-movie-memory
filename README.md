@@ -70,7 +70,7 @@ I designed the architecture manually before feeding it to an AI agent to impleme
 
 I chooose variant B simply because I am more interested in frontend developement than backend, however I would feel comfortable doing either. I also thought building out the optimistic update feature would be fun as I have not had to do that for quite some time.
 
-**I choose TanStack Query** instead of hand-rolled React state or SWR because it handles optimistic updates with rollback , per-key caching, pausing a query, and explicit refetch are all built in. A custom version would mostly re-implement those features with more edge cases. SWR could do it too, but its mutation and rollback features are less explicit.
+**I choose TanStack Query** instead of hand-rolled React state or SWR because it handles optimistic updates with rollback , per-key caching, pausing a query, and explicit refetching. A custom version would mostly re-implement those features with more edge cases. SWR could do it too, but its mutation and rollback features are less explicit.
 
 ## Key tradeoffs
 - **Shared Zod schemas instead of OpenAPI + tooling.** Three endpoints in one TypeScript repo can share schemas directly, which avoids a codegen step.
@@ -82,14 +82,14 @@ I chooose variant B simply because I am more interested in frontend developement
 ## With 2 more hours
 - Use a component library to reduce overhead while making it easier to enforce consistency across components.
 - Add testing to verify access control for user data.
-- Fix the layout shift when loading the fun fact section.
-- Implement a state management library like Redux or Zustand to support a more complex app while avoiding performance issues.
+- Fix the layout shift when loading/refreshing the fun fact section.
+- Implement a state management library like Redux or Zustand to support a more complex app while avoiding performance issues from re-renders.
 - Run Playwright end-to-end tests against a seeded session, covering the all the test cases.
 - Add server-side rate limiting or a short server cache for fact generation (borrowing from Variant A), and switch fact generation to `POST`.
 
 ## AI usage
 - Used Cursor to turn my architecture guide, component contracts, DB schemas into a written plan, then to scaffold files and write first drafts of the code and tests.
-- Reviewed and directed the key decisions myself: folder structure, who owns each value, the query key design, pausing fact fetches during a save, and component contracts.
+- Reviewed and directed the key decisions myself: folder structure, who owns each value, libraries used, the query key design, pausing fact fetches during a save, and component contracts.
 - Used the AI to check version-specific APIs (Next.js 16 `cacheComponents`, Zod 4, OpenAI SDK v7 Responses API, Auth.js v5 `AUTH_TRUST_HOST`) against the installed packages' docs.
 - Verified everything by running the test suite, type checking, linting, a production build, and a curl smoke test of the guards and API errors against a seeded database session.
-- Used Cursor to assist in writing this readme file, wrote the first draft then I read EVERY line and made changes as needed. Estimated 50% is written by AI.
+- Used Cursor to assist in writing this readme file, wrote the first draft then I read EVERY line and made changes as needed. Estimated 50% is written by AI after editing.
