@@ -44,9 +44,9 @@ The schema lives in `prisma/schema.prisma` and the migrations live in `prisma/mi
 ---
 
 ## Architecture overview
-I designed the following architecture manually before feeding it to an AI agent to implement and document. I gave it specific instructions and libraries to use. I also designed the contracts for components + DB schemas and provided them to the agent to use.
+I designed the architecture manually before feeding it to an AI agent to implement and document. I gave it specific instructions and libraries to use. I also designed the contracts for components + DB schemas and provided them to the agent to use.
 
-**Separation of concerns.** Separate UI, feature logic, server services, and data access. I kept business rules out of components.
+**Separation of concerns.** Separate UI, feature logic, server services, and data access.
 
 **Component architecture.** Next.js Server Components render the page shell, and Client Components handle the movie editor and fact card. Only the interactive parts need browser state and event handlers. This also improves performance by rendering components on the server whenever possible.
 
