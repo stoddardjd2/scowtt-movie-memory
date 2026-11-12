@@ -50,7 +50,7 @@ I designed the architecture manually before feeding it to an AI agent to impleme
 
 **Component architecture.** Next.js Server Components render the page shell, and Client Components handle the movie editor and fact card. Only the interactive parts need browser state and event handlers. This also improves performance by rendering components on the server whenever possible.
 
-**State management.** The draft title lives in `useState`, and the saved movie lives in TanStack Query. Save updates the displayed title immediately and rolls it back if the request fails. I did not use a state management library soley for simplicities sake. If the application grew, it would be wise to implement a library like Zustand or Redux to ensure strict patterns and improve performance by reducing unnecessary re-renders.
+**State management.** The draft title lives in `useState`, and the saved movie lives in TanStack Query. Save updates the displayed title immediately and rolls it back if the request fails. I did not use a state management library solely for simplicities sake. If the application grew, it would be wise to implement a library like Zustand or Redux to ensure strict patterns and improve performance by reducing unnecessary re-renders.
 
 **Data fetching.** Native `fetch` sits behind a typed API client, which is called through TanStack Query. All three endpoints get the same response handling, and the UI can show loading and save status. 
 
